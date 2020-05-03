@@ -6,30 +6,18 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import React, { Component } from 'react';
+import {Provider} from 'react-redux';
+import Navigation from './src/navigation/Navigation';
+import store from './src/store/Store';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-import Navigation from './src/navigation/Navigation'
-
-const App: () => React$Node = () => {
-  return (
-    <Navigation/>
-  );
-};
-
-export default App;
+export default class App extends Component {
+  render() {
+    return (
+      <Provider store={store()}>
+        <Navigation />
+      </Provider>
+    );
+  }
+}
