@@ -23,9 +23,9 @@ export default httpReducer = (state = INITIAL_STATE, action) => {
 const httpTostate = (state, result) => {
     switch (state) {
         case newsList:
-            return { comments: result }
+            return { newsList: result }
         case newsDetail:
-            return { comment: result }
+            return { newsDetail: result }
         default:
             console.log('Resppnse');
             alert('state Response');

@@ -2,6 +2,10 @@ import {Text,View,Button} from 'react-native'
 import React, {useState} from 'react'
 import styles from '../styles/NewsListScreenStyle'
 import NewsDetailScreen from './NewsDetailScreen';
+import {connect} from 'react-redux';
+import {httpGet} from '../actions';
+import {newsListApi} from '../server/ApiService';
+import {INDIA_COUNTRY_CODE} from '../server/Config';
 
 class NewsListScreen extends React.Component
 {
@@ -21,19 +25,31 @@ class NewsListScreen extends React.Component
 
   render()
   {
+    const { httpGet,isLoading, errorMessage, newsList, newsDetail } = this.props;
     return (
       <View style={styles.mainContainer}>
         <Text style={styles.header}>Home Screen </Text>
-
-        <NewsDetailScreen value="Text"/>
+        {/* <NewsDetailScreen value="Text"/> */}
+        <Button
+                    loading={isLoading}
+                    disabled={isLoading}
+                    title='Get News'
+                    onPress={() => httpGet(newsListApi.getNewsList(INDIA_COUNTRY_CODE))}
+                />
+        <this.listItem articles = {newsList}/>      
+        <Text> Error - {errorMessage}</Text>        
       </View>
     );
   }
+
+  listItem = (props) =>{
+      if(props.articles == null || props.articles === 'undefined')
+      return null;
+      return(
+        <Text>{props.articles.status}</Text>
+      );
+  }
     
-  
-
-
-
 } 
 
 // const HomeScreen = ()=>{
@@ -48,4 +64,14 @@ class NewsListScreen extends React.Component
 // }
 
 
-export default NewsListScreen;
+//export default NewsListScreen;
+
+const mapStateToProps = state => {
+  return { isLoading, errorMessage, newsList, newsDetail } = state.http;
+};
+
+const mapDispatchToProps = dispatch =>{
+  
+};
+
+export default connect(mapStateToProps, { httpGet })(NewsListScreen);

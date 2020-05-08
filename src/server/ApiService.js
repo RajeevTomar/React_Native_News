@@ -1,6 +1,6 @@
 import { newsList, newsDetail } from '../constants/State';
 
-export const commentApi = {
+export const newsListApi = {
     getNewsList(country) {
         return {
             method: 'top-headlines',
