@@ -1,3 +1,3 @@
-import {httpGet} from './HttpAction'; 
+import {httpGet, fetchNews} from './HttpAction'; 
 
-export {httpGet};
+export {httpGet,fetchNews};

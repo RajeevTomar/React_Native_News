@@ -23,7 +23,7 @@ export default httpReducer = (state = INITIAL_STATE, action) => {
 const httpTostate = (state, result) => {
     switch (state) {
         case newsList:
-            return { newsList: result }
+            return { newsListResponse: result }
         case newsDetail:
             return { newsDetail: result }
         default:
