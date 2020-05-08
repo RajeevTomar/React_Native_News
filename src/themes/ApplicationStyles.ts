@@ -39,7 +39,7 @@ const ApplicationStyles: ApplicationStylesType = {
     container: {
       flex: 1,
       paddingTop: Metrics.baseMargin,
-      backgroundColor: Colors.transparent
+      backgroundColor: Colors.transparent,
     },
     section: {
       margin: Metrics.section,

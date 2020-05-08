@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { httpGet, fetchNews } from '../actions';
 import { newsListApi } from '../server/ApiService';
 import { INDIA_COUNTRY_CODE } from '../server/Config';
-import ScreenLoader from '../components/ScreenLoader'
+import ScreenLoader from '../components/ScreenLoader';
+import {saveSelectedArticle} from '../actions/NewsArticleAction';
 
 class NewsListScreen extends React.Component {
 
@@ -65,7 +66,7 @@ class NewsListScreen extends React.Component {
     return (
       <TouchableHighlight
         onPress={() => this.onTapNewsArticle(article)}>
-        <View style={styles.container}>
+        <View style={styles.newsItemContainer}>
           <View style={{ flex: 1, flexDirection: 'column' }}>
             <Text style={{ flex: 1, fontSize: 20, fontWeight: 'bold', padding: 5, color: 'white' }}>
               {article.title}</Text>
@@ -86,13 +87,24 @@ class NewsListScreen extends React.Component {
   }
 
   onTapNewsArticle = (article) => {
-
+    
+      this.props.saveSelectedArticle(article);
+      // move to the New Article Screeen
+      this.props.navigation.navigate("newsDetail");
+      this.props.navigation.navigate('Home', { screen: 'NewsDetail' });
   }
 
 
 }
 
 const mapStateToProps = state => {
+  // return {
+  //   isLoading:state.http.isLoading,
+  //   errorMessage = state.http.errorMessage,
+  //   newsListResponse = state.http.newsListResponse,
+  //   newsDetail = state.http.newsDetail,
+
+  // }
   return { isLoading, errorMessage, newsListResponse, newsDetail } = state.http;
 };
 
@@ -109,4 +121,4 @@ const mapStateToProps = state => {
 //   }
 // };
 
-export default connect(mapStateToProps, { httpGet })(NewsListScreen);
+export default connect(mapStateToProps, { httpGet,saveSelectedArticle })(NewsListScreen);

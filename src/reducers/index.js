@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux';
 import httpReducer from '../reducers/HttpReducer';
+import articleReducer from './NewsArticleReducer';
 
 
 export default combineReducers({
-    http:httpReducer
+    http:httpReducer,
+    article:articleReducer
 });

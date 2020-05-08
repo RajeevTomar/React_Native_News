@@ -6,6 +6,7 @@ import Colors from '../themes/Colors';
 
 
 import NewsListScreen from '../screens/NewsListScreen'
+import NewsDetailScreen from '../screens/NewsDetailScreen'
 
 const Stack = createStackNavigator();
 
@@ -21,10 +22,15 @@ function Navigation() {
           fontWeight: 'bold',
         },
       }}
+      initialRouteName="Home"
       >
         <Stack.Screen name="NewsList"
           component={NewsListScreen}
-          options ={{title:'News'}}
+          options={{ title: 'HEADLINES' }}
+        />
+         <Stack.Screen name="NewsDetail"
+          component={NewsDetailScreen}
+          options={{ title: 'Detail' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
