@@ -49,6 +49,7 @@ class NewsListScreen extends React.Component {
   }
 
   newsList = (articles) => {
+    console.log(articles);
     return (
       <FlatList
         data={articles}
@@ -65,19 +66,14 @@ class NewsListScreen extends React.Component {
       <TouchableHighlight
         onPress={() => this.onTapNewsArticle(article)}>
         <View style={styles.rowContainer}>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <Text style={{ flex: 1, fontSize: 25, fontWeight: 'bold', padding: 5 }}>
+          <View style={{ flex: 1, flexDirection: 'column' }}>
+            <Text style={{ flex: 1, fontSize: 22, fontWeight: 'bold', padding: 5 }}>
               &#8377;{article.title}</Text>
             <Text style={{
-              flex: 1, fontSize: 22, fontWeight: 'bold',
+              flex: 1, fontSize: 18, fontWeight: 'normal',
               padding: 1, textAlign: 'right', marginRight: 0
             }}>
-              {article.author} /</Text>
-            <Text style={{
-              fontSize: 18, fontWeight: 'normal',
-              padding: 1, textAlign: 'right', marginRight: 5, marginTop: 5
-            }}>
-              {article.description}</Text>
+              {article.source.name}</Text>
           </View>
           {/* <View style={{ flex: 1, flexDirection: 'row' }}>
             <Text style={{ flex: 1, fontSize: 18, fontWeight: 'normal', padding: 5, }}>{
