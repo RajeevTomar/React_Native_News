@@ -65,13 +65,13 @@ class NewsListScreen extends React.Component {
     return (
       <TouchableHighlight
         onPress={() => this.onTapNewsArticle(article)}>
-        <View style={styles.rowContainer}>
+        <View style={styles.container}>
           <View style={{ flex: 1, flexDirection: 'column' }}>
-            <Text style={{ flex: 1, fontSize: 22, fontWeight: 'bold', padding: 5 }}>
-              &#8377;{article.title}</Text>
+            <Text style={{ flex: 1, fontSize: 20, fontWeight: 'bold', padding: 5, color: 'white' }}>
+              {article.title}</Text>
             <Text style={{
-              flex: 1, fontSize: 18, fontWeight: 'normal',
-              padding: 1, textAlign: 'right', marginRight: 0
+              flex: 1, fontSize: 16, fontWeight: 'normal',
+              padding: 1, textAlign: 'right', marginRight: 0, color:'white'
             }}>
               {article.source.name}</Text>
           </View>

@@ -6,12 +6,15 @@ export default StyleSheet.create({
     header:{
        ...Fonts.size.large,
        color:Colors.red,
-       backgroundColor: Colors.eggplant,
        marginTop: Metrics.marginHorizontal
 
     },
     container: {
-      paddingBottom: Metrics.baseMargin
+      backgroundColor: Colors.coal,
+      marginLeft: Metrics.smallMargin,
+      marginRight:Metrics.smallMargin,
+      marginBottom:Metrics.smallMargin,
+      padding:Metrics.smallMargin
     },
     logo: {
       marginTop: Metrics.doubleSection,
