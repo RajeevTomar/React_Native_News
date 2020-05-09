@@ -1,19 +1,19 @@
-import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import * as React from 'react';
+import NewsDetailScreen from '../screens/NewsDetailScreen';
+import NewsListScreen from '../screens/NewsListScreen';
 import Colors from '../themes/Colors';
 
 
-import NewsListScreen from '../screens/NewsListScreen'
-import NewsDetailScreen from '../screens/NewsDetailScreen'
+
 
 const Stack = createStackNavigator();
 
 function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{
+      <Stack.Navigator initialRouteName="NewsList" screenOptions={{
         headerStyle: {
           backgroundColor: Colors.header,
         },
@@ -22,15 +22,14 @@ function Navigation() {
           fontWeight: 'bold',
         },
       }}
-      initialRouteName="Home"
       >
         <Stack.Screen name="NewsList"
           component={NewsListScreen}
           options={{ title: 'HEADLINES' }}
         />
-         <Stack.Screen name="NewsDetail"
+        <Stack.Screen name="Article"
           component={NewsDetailScreen}
-          options={{ title: 'Detail' }}
+          options={{ title: 'ARTICLE' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

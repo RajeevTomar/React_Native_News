@@ -6,13 +6,14 @@
  * @flow strict-local
  */
 
+import { createStackNavigator } from '@react-navigation/stack';
 import React, { Component } from 'react';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import Navigation from './src/navigation/Navigation';
 import store from './src/store/Store';
 
-
 export default class App extends Component {
+
   render() {
     return (
       <Provider store={store()}>

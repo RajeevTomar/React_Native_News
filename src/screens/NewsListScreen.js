@@ -54,18 +54,18 @@ class NewsListScreen extends React.Component {
     return (
       <FlatList
         data={articles}
-        renderItem={({ item }) => this.renderNewsArticle(item)}
+        renderItem={({ item,index }) => this.renderNewsArticle(item,index)}
         keyExtractor={(item, index) => index.toString()}
       />
     )
   }
 
-  renderNewsArticle = (article) => {
+  renderNewsArticle = (article, index) => {
     // let date = Utils.getFormattedDateStr(item.start_date);
     // let submittedBidCount = item.totalBids;
     return (
       <TouchableHighlight
-        onPress={() => this.onTapNewsArticle(article)}>
+        onPress={() => this.onTapNewsArticle(article,index)}>
         <View style={styles.newsItemContainer}>
           <View style={{ flex: 1, flexDirection: 'column' }}>
             <Text style={{ flex: 1, fontSize: 20, fontWeight: 'bold', padding: 5, color: 'white' }}>
@@ -86,12 +86,16 @@ class NewsListScreen extends React.Component {
     );
   }
 
-  onTapNewsArticle = (article) => {
+  onTapNewsArticle = (article, index) => {
     
+      // save the article in store
       this.props.saveSelectedArticle(article);
-      // move to the New Article Screeen
-      this.props.navigation.navigate("newsDetail");
-      this.props.navigation.navigate('Home', { screen: 'NewsDetail' });
+      const navigation = this.props.navigation;
+        // move to the New Article Screeen with carring index of article
+     // navigation.navigate('Article',{index:index});
+
+      // move to the New Article Screeen with carring article object
+      navigation.navigate('Article',{article:article});
   }
 
 
