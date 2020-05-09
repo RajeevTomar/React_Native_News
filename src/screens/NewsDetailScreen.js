@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View } from 'react-native'
-import styles from '../styles/NewsListScreenStyle'
 import { connect } from 'react-redux';
 import { useSelector } from 'react-redux'
+import NewsArticleUI from './NewsArticleUI';
 
 
 // NOTE - as there can be only single export default so please remove the commented
@@ -23,11 +22,8 @@ class NewsDetailScreen extends React.Component {
 
 
   render() {
-    return (
-      <Text style={styles.header}>
-        {this.props.article.description}
-      </Text>
-
+    return(
+      <NewsArticleUI article={article}/>
     );
   }
 }
@@ -57,16 +53,12 @@ const mapStateToProps = (state) => {
  */
 const newsArticleWithAnotherReducerComponent = props => {
   const article = useSelector(state => state.article.article);
-  return (
-    <Text style={styles.header}>
-      {article.title}
-    </Text>
+  return(
+    <NewsArticleUI article={article}/>
   );
 }
 
 export default newsArticleWithAnotherReducerComponent;
-
-
 
 
 /**
@@ -79,11 +71,9 @@ export default newsArticleWithAnotherReducerComponent;
  */
 const newsArticleWithoutReduxComponent = props => {
   const article = props.route.params.article;
-    return (
-      <Text style={styles.header}>
-        {article.title}
-      </Text>
-    );
+  return(
+    <NewsArticleUI article={article}/>
+  );
 }
 
 //export default newsArticleWithoutReduxComponent;
@@ -99,14 +89,12 @@ const newsArticleWithoutReduxComponent = props => {
  *  get the article from store based on index
  */
 
- const newsArticleWithSameReducerComponent = props =>{
-    const selectedIndex = props.route.params.index;
-    const article = useSelector(state => state.http.newsListResponse.articles[selectedIndex]);
-    return (
-      <Text style={styles.header}>
-        {article.title}
-      </Text>
-    );
- }
+const newsArticleWithSameReducerComponent = props => {
+  const selectedIndex = props.route.params.index;
+  const article = useSelector(state => state.http.newsListResponse.articles[selectedIndex]);
+  return(
+    <NewsArticleUI article={article}/>
+  );
+}
 
- //export default newsArticleWithSameReducerComponent;
+//export default newsArticleWithSameReducerComponent;

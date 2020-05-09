@@ -6,7 +6,9 @@ import { httpGet, fetchNews } from '../actions';
 import { newsListApi } from '../server/ApiService';
 import { INDIA_COUNTRY_CODE } from '../server/Config';
 import ScreenLoader from '../components/ScreenLoader';
-import {saveSelectedArticle} from '../actions/NewsArticleAction';
+import { saveSelectedArticle } from '../actions/NewsArticleAction';
+import Utils from '../utils/Utils';
+import AsyncImage from '../components/AsyncImage';
 
 class NewsListScreen extends React.Component {
 
@@ -54,53 +56,67 @@ class NewsListScreen extends React.Component {
     return (
       <FlatList
         data={articles}
-        renderItem={({ item,index }) => this.renderNewsArticle(item,index)}
+        renderItem={({ item, index }) => this.renderNewsArticle(item, index)}
         keyExtractor={(item, index) => index.toString()}
       />
     )
   }
 
   renderNewsArticle = (article, index) => {
-    // let date = Utils.getFormattedDateStr(item.start_date);
+    let articleDate = new Date(article.publishedAt);
+    let date = Utils.getFormattedDate(articleDate, '-');
     // let submittedBidCount = item.totalBids;
     return (
       <TouchableHighlight
-        onPress={() => this.onTapNewsArticle(article,index)}>
+        onPress={() => this.onTapNewsArticle(article, index)}>
         <View style={styles.newsItemContainer}>
-          <View style={{ flex: 1, flexDirection: 'column' }}>
-            <Text style={{ flex: 1, fontSize: 20, fontWeight: 'bold', padding: 5, color: 'white' }}>
-              {article.title}</Text>
-            <Text style={{
-              flex: 1, fontSize: 16, fontWeight: 'normal',
-              padding: 1, textAlign: 'right', marginRight: 0, color:'white'
-            }}>
+          <AsyncImage style={{
+           flex:1
+          }}
+            source={{
+              uri: 'https://goo.gl/2W4iW6'
+            }}
+            placeholderColor='#b3e5fc' />
+          <Text style={styles.title}>
+            {article.title}</Text>
+          <View style={styles.bottomView}>
+            <Text style={styles.url}>
               {article.source.name}</Text>
+            <Text style={styles.date}>
+              {date}</Text>
           </View>
-          {/* <View style={{ flex: 1, flexDirection: 'row' }}>
-            <Text style={{ flex: 1, fontSize: 18, fontWeight: 'normal', padding: 5, }}>{
-              date
-            }</Text>
-          </View> */}
         </View>
       </TouchableHighlight>
     );
   }
 
   onTapNewsArticle = (article, index) => {
-    
-      // save the article in store
-      this.props.saveSelectedArticle(article);
-      const navigation = this.props.navigation;
-        // move to the New Article Screeen with carring index of article
-     // navigation.navigate('Article',{index:index});
+    const navigation = this.props.navigation;
 
-      // move to the New Article Screeen with carring article object
-      navigation.navigate('Article',{article:article});
+    // Will be use in case of TYPE - 1 & 2
+    // save the article in store
+    this.props.saveSelectedArticle(article);
+
+    // TYPE - 4
+    // move to the New Article Screeen with carring index of article
+    // navigation.navigate('Article',{index:index});
+
+    // TYPE - 3
+    // move to the New Article Screeen with carring article object
+    navigation.navigate('Article', { article: article });
   }
 
 
 }
 
+
+/**
+ * 
+ * @param {*} state -- is the object that will received from redux store.
+ *   in case of multiple reducers, state wrapped with reducer name that
+ *  defined in time of combine reducers.
+ *   Here getting the state from http reducer
+ */
 const mapStateToProps = state => {
   // return {
   //   isLoading:state.http.isLoading,
@@ -116,13 +132,12 @@ const mapStateToProps = state => {
 // /**
 //  * 
 //  * @param {*} dispatch 
-//  *  we can disptach action from here or
-//  *  cann pass from actions
+//  *  we can also disptach the action from here 
 //  */
-// const mapDispatchToProps = dispatch =>{
-//   return {
-//      fetchNews:(config)=>{fetchNews(dispatch,config)}
-//   }
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchNews: (config) => { fetchNews(dispatch, config) }
+  }
+};
 
-export default connect(mapStateToProps, { httpGet,saveSelectedArticle })(NewsListScreen);
+export default connect(mapStateToProps, { httpGet, saveSelectedArticle })(NewsListScreen);

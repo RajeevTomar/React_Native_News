@@ -7,7 +7,8 @@ const type = {
 const size = {
     small: 14,
     medium: 16,
-    large: 30
+    large: 22,
+    extraLarge:30
 }
 
 const style = {

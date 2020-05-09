@@ -48,6 +48,13 @@ export const fetchNews = (dispatch,config) =>{
     });
 }
 
+
+/*
+ * 
+ * @param {*} dispatch -- dispatch the actions to the reducers
+ * @param {*} type - type define the action and based on action reducter return the state 
+ * @param {*} payload - is the object that can pass with action type
+ */
 const dispatchActions = (dispatch, type, payload) => {
     dispatch({
       type: type,
