@@ -1,7 +1,7 @@
 import Platform from 'react';
 
 const colors = {
-    background: '#1F0808',
+    background: '#464646',
     clear: 'rgba(0,0,0,0)',
     facebook: '#3b5998',
     transparent: 'rgba(0,0,0,0)',
@@ -22,6 +22,9 @@ const colors = {
     border: '#483F53',
     banner: '#5F3E63',
     header:'rgba(1, 1, 1, 0.9)',
+    textColor:'#f2f2f2',
+    sourceColor:'#bababa',
+    
   
     snow: 'white',
     red: '#E64044',

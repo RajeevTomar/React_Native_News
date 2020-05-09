@@ -7,33 +7,18 @@ export default asyncImage = props => {
         placeholderColor,
         style,
         source
-    } = this.props;
-    
+    } = props;
+
     return (
         <View
             style={style}>
             <Image
                 source={source}
-                resizeMode={'contain'}
-                style={[
-                    style,
-                    {
-                        position: 'absolute',
-                        resizeMode: 'contain'
-                    }
-                ]}
-                onLoad={this._onLoad} />
-            {!this.state.loaded &&
-                <View
-                    style={[
-                        style,
-                        {
-                            backgroundColor: placeholderColor,
-                            position: 'absolute'
-                        }
-                    ]} />
-            }
-
+                resizeMode={'cover'}
+                style={
+                    style
+                }
+            />
         </View>
     )
 

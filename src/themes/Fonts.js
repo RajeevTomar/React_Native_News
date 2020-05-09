@@ -5,10 +5,11 @@ const type = {
 }
 
 const size = {
-    small: 14,
+    verySmall:8,
+    small: 12,
     medium: 16,
-    large: 22,
-    extraLarge:30
+    large: 20,
+    extraLarge:24
 }
 
 const style = {

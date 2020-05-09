@@ -9,6 +9,9 @@ import ScreenLoader from '../components/ScreenLoader';
 import { saveSelectedArticle } from '../actions/NewsArticleAction';
 import Utils from '../utils/Utils';
 import AsyncImage from '../components/AsyncImage';
+import { Colors, Metrics } from '../themes';
+
+
 
 class NewsListScreen extends React.Component {
 
@@ -70,20 +73,20 @@ class NewsListScreen extends React.Component {
       <TouchableHighlight
         onPress={() => this.onTapNewsArticle(article, index)}>
         <View style={styles.newsItemContainer}>
-          <AsyncImage style={{
-           flex:1
-          }}
+          <AsyncImage style={styles.image}
             source={{
-              uri: 'https://goo.gl/2W4iW6'
+              uri: article.urlToImage
             }}
-            placeholderColor='#b3e5fc' />
-          <Text style={styles.title}>
-            {article.title}</Text>
+            placeholderColor={Colors.background} />
           <View style={styles.bottomView}>
             <Text style={styles.url}>
               {article.source.name}</Text>
             <Text style={styles.date}>
               {date}</Text>
+          </View>
+          <View style={styles.titleView}>
+            <Text numberOfLines={3} style={styles.title}>
+              {article.title}</Text>
           </View>
         </View>
       </TouchableHighlight>

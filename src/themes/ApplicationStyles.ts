@@ -26,8 +26,8 @@ const ApplicationStyles: ApplicationStylesType = {
   screen: {
     mainContainer: {
       flex: 1,
-      backgroundColor: Colors.snow,
-      marginTop:Metrics.smallMargin,
+      backgroundColor: Colors.background,
+      paddingTop:Metrics.smallMargin,
     },
     backgroundImage: {
       position: 'absolute',

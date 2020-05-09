@@ -4,40 +4,53 @@ import { Fonts, Metrics, Colors, ApplicationStyles } from '../themes'
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
   newsItemContainer: {
-    backgroundColor: Colors.coal,
+    backgroundColor:Colors.background,
     marginLeft: Metrics.smallMargin,
     marginRight: Metrics.smallMargin,
-    marginBottom: Metrics.smallMargin,
     padding: Metrics.smallMargin,
     borderRadius: 6,
+    height:200,
     borderWidth: 1,
-    borderColor: '#fff'
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center',
+    borderColor: Colors.transparent
   },
   title: {
     fontSize: Fonts.size.large,
-    color: Colors.snow,
+    color: Colors.textColor,
     marginTop: Metrics.marginHorizontal,
-    flex: 1,
+    marginLeft: Metrics.smallMargin,
+    marginRight: Metrics.smallMargin,
     fontWeight: 'bold',
-    padding: Metrics.smallMargin,
   },
-  bottomView: {
-    marginBottom: Metrics.smallMargin,
+  titleView: {
     padding: Metrics.smallMargin,
     flex:1,
+    justifyContent:'center',
+    position: "absolute",
+    alignItems:'center'
+  },
+  bottomView: {
+    padding: Metrics.smallMargin,
+    flex:1,
+    backgroundColor:Colors.windowTint,
     flexDirection:'row',
-    justifyContent:'space-between'
+    justifyContent:'space-between',
+    alignItems:'flex-end'
   },
   url: {
-    fontSize: Fonts.size.medium,
+    fontSize: Fonts.size.small,
     color: Colors.snow,
     marginTop: Metrics.marginHorizontal,
     fontWeight: 'normal',
     justifyContent:'flex-start',
+    flex:1,
+    alignItems:'flex-start',
     padding: Metrics.smallMargin,
   },
   date: {
-    fontSize: Fonts.size.medium,
+    fontSize: Fonts.size.small,
     color: Colors.snow,
     marginTop: Metrics.marginHorizontal,
     fontWeight: 'normal',
@@ -45,11 +58,11 @@ export default StyleSheet.create({
     alignItems:'flex-end',
     padding: Metrics.smallMargin,
   },
-  logo: {
-    marginTop: Metrics.doubleSection,
-    height: Metrics.images.logo,
-    width: Metrics.images.logo,
-    resizeMode: 'contain'
+  image: {
+      height:'100%',
+      position: "absolute",
+      width:'100%',
+      borderRadius: 6,
   },
   centered: {
     alignItems: 'center'
