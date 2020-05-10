@@ -39,7 +39,7 @@ export default StyleSheet.create({
     justifyContent:'space-between',
     alignItems:'flex-end'
   },
-  url: {
+  source: {
     fontSize: Fonts.size.small,
     color: Colors.snow,
     marginTop: Metrics.marginHorizontal,

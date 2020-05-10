@@ -9,7 +9,9 @@ const size = {
     small: 12,
     medium: 16,
     large: 20,
-    extraLarge:24
+    extraLarge:24,
+    doubleExtraLarge:30
+
 }
 
 const style = {

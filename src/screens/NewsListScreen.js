@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, Button, Image, FlatList, TouchableHighlight } from 'react-native'
-import styles from '../styles/NewsListScreenStyle'
+import styles from '../styles/NewsListScreenStyle';
 import { connect } from 'react-redux';
 import { httpGet, fetchNews } from '../actions';
 import { newsListApi } from '../server/ApiService';
@@ -79,7 +79,7 @@ class NewsListScreen extends React.Component {
             }}
             placeholderColor={Colors.background} />
           <View style={styles.bottomView}>
-            <Text style={styles.url}>
+            <Text style={styles.source}>
               {article.source.name}</Text>
             <Text style={styles.date}>
               {date}</Text>
