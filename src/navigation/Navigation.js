@@ -1,8 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import NewsDetailScreen from '../screens/NewsDetailScreen';
 import NewsListScreen from '../screens/NewsListScreen';
+import NewsArticleScreen from '../screens/NewsArticleScreen';
 import Colors from '../themes/Colors';
 
 
@@ -25,11 +25,11 @@ function Navigation() {
       >
         <Stack.Screen name="NewsList"
           component={NewsListScreen}
-          options={{ title: 'HEADLINES' }}
+          options={{ title: 'HEADLINES', headerTitleAlign:'center'}}
         />
         <Stack.Screen name="Article"
-          component={NewsDetailScreen}
-          options={{ title: 'ARTICLE' }}
+          component={NewsArticleScreen}
+          options={{ headerShown:false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

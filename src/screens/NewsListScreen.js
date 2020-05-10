@@ -1,15 +1,15 @@
 import React from 'react';
-import { Text, View, Button, Image, FlatList, TouchableHighlight } from 'react-native'
-import styles from '../styles/NewsListScreenStyle';
+import { FlatList, Text, TouchableHighlight, View } from 'react-native';
 import { connect } from 'react-redux';
-import { httpGet, fetchNews } from '../actions';
+import { fetchNews, httpGet } from '../actions';
+import { saveSelectedArticle } from '../actions/NewsArticleAction';
+import AsyncImage from '../components/AsyncImage';
+import ScreenLoader from '../components/ScreenLoader';
 import { newsListApi } from '../server/ApiService';
 import { INDIA_COUNTRY_CODE } from '../server/Config';
-import ScreenLoader from '../components/ScreenLoader';
-import { saveSelectedArticle } from '../actions/NewsArticleAction';
+import styles from '../styles/NewsListScreenStyle';
+import { Colors } from '../themes';
 import Utils from '../utils/Utils';
-import AsyncImage from '../components/AsyncImage';
-import { Colors, Metrics } from '../themes';
 
 
 
@@ -102,11 +102,11 @@ class NewsListScreen extends React.Component {
 
     // TYPE - 4
     // move to the New Article Screeen with carring index of article
-    // navigation.navigate('Article',{index:index});
+    navigation.navigate('Article', { index: index });
 
     // TYPE - 3
     // move to the New Article Screeen with carring article object
-    navigation.navigate('Article', { article: article });
+    // navigation.navigate('Article', { article: article });
   }
 
 

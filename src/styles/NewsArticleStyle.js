@@ -50,7 +50,7 @@ export default StyleSheet.create({
       fontSize: Fonts.size.medium,
       color: Colors.sourceColor,
        padding: Metrics.baseMargin,
-      fontWeight: 'normal',
+      fontWeight: 'bold',
       alignItems:'center',
 
     },
@@ -58,5 +58,19 @@ export default StyleSheet.create({
         height:'100%',
         position: "absolute",
         width:'100%',
+    },
+    circleView:{
+      width:Metrics.images.medium,
+      height:Metrics.images.medium,
+      borderRadius:Metrics.images.small,
+      backgroundColor:Colors.windowTint,
+      position:'absolute',
+      marginTop:Metrics.navBarHeight,
+      marginLeft:Metrics.doubleBaseMargin,
+    },
+    circleImage:{
+      width:Metrics.images.medium,
+      height:Metrics.images.medium,
     }
+
   })

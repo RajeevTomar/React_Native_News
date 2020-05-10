@@ -27,7 +27,7 @@ const ApplicationStyles: ApplicationStylesType = {
     mainContainer: {
       flex: 1,
       backgroundColor: Colors.background,
-      paddingTop:Metrics.smallMargin,
+      
     },
     backgroundImage: {
       position: 'absolute',
