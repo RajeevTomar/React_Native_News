@@ -14,6 +14,7 @@ const metrics = {
   smallMargin: 5,
   tinyMargin:1,
   doubleSection: 50,
+  extraDoubleSection:100,
   horizontalLineHeight: 1,
   searchBarHeight: 30,
   screenWidth,

@@ -77,6 +77,11 @@ target 'News_ReactNative' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
+
+  pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
+
   target 'News_ReactNativeTests' do
     inherit! :complete
     # Pods for testing

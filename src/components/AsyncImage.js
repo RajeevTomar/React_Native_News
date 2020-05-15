@@ -6,14 +6,19 @@ export default asyncImage = props => {
     const {
         placeholderColor,
         style,
-        source
+        imageUrl
     } = props;
 
+    if (imageUrl == null)
+        return null;
+    let uri = {
+        uri: imageUrl
+    };
     return (
         <View
             style={style}>
             <Image
-                source={source}
+                source={uri}
                 resizeMode={'cover'}
                 style={
                     style

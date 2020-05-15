@@ -19,7 +19,6 @@ export default StyleSheet.create({
       justifyContent:'flex-end',
       alignItems:'center',
       backgroundColor:Colors.windowTint,
-      paddingBottom:Metrics.doubleSection,
     },
     sourceDateView:{
       flexDirection:'row',
@@ -48,8 +47,9 @@ export default StyleSheet.create({
     },
     description: {
       fontSize: Fonts.size.medium,
-      color: Colors.sourceColor,
+      color: Colors.coal,
        padding: Metrics.baseMargin,
+       backgroundColor:Colors.ricePaper,
       fontWeight: 'bold',
       alignItems:'center',
 

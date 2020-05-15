@@ -18,7 +18,7 @@ export interface ScreenStylesType {
   backgroundImage
   container
   section
-  sectionHeader
+  sectionHeader 
   sectionText
 }
 
@@ -52,12 +52,12 @@ const ApplicationStyles: ApplicationStylesType = {
     sectionText: {
       ...Fonts.style.medium,
       paddingVertical: Metrics.doubleBaseMargin,
-      color: Colors.snow,
+      color: Colors.textColor,
       marginVertical: Metrics.smallMargin,
       textAlign: 'center'
     },
     subtitle: {
-      color: Colors.snow,
+      color: Colors.textColor,
       padding: Metrics.smallMargin,
       marginBottom: Metrics.smallMargin,
       marginHorizontal: Metrics.smallMargin

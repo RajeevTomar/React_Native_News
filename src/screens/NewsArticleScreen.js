@@ -117,9 +117,7 @@ const NewsArticleUI = ({ article,navigation }) => {
   return (
     <View style={styles.mainContainer}>
       <AsyncImage style={styles.image}
-        source={{
-          uri: article.urlToImage
-        }}
+        imageUrl={article.urlToImage}
         placeholderColor={Colors.background} />
       <View style={styles.articleContentView}>
         <Text  style={styles.title}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Text, TouchableHighlight, View } from 'react-native';
+import { FlatList, Text, TouchableHighlight, View , NetInfo} from 'react-native';
 import { connect } from 'react-redux';
 import { fetchNews, httpGet } from '../actions';
 import { saveSelectedArticle } from '../actions/NewsArticleAction';
@@ -10,7 +10,8 @@ import { INDIA_COUNTRY_CODE } from '../server/Config';
 import styles from '../styles/NewsListScreenStyle';
 import { Colors } from '../themes';
 import Utils from '../utils/Utils';
-
+import ErroView from '../components/ErrorView';
+import {HTTP_ERROR_TYPE} from '../Constants';
 
 
 class NewsListScreen extends React.Component {
@@ -27,7 +28,13 @@ class NewsListScreen extends React.Component {
   }
 
   render() {
-    const { isLoading, errorMessage, newsListResponse } = this.props;
+    const { isLoading, error, newsListResponse } = this.props;
+    // check errorMessage
+    if(error != null && error != 'undefined')
+    {
+        if(error.errorType != '')
+          return <ErroView error={error} actionText='TRY AGAIN' action={this.onClickErrorViewAction}/>;
+    }
     return (
       <View style={styles.mainContainer}>
         <this.getMainContainer response={newsListResponse} />
@@ -36,15 +43,23 @@ class NewsListScreen extends React.Component {
     );
   }
 
-  getMainContainer = (props) => {
+
+  getMainContainer = ({response}) => {
     // need to check if response is null or newslist
     // is empty
-    const httpResponse = props.response;
-    if (httpResponse != null && httpResponse != 'undefined') {
-      const totalResults = httpResponse.totalResults;
-      const articles = httpResponse.articles;
+    //const httpResponse = props.response;
+    if (response != null && response != 'undefined') {
+      const totalResults = response.totalResults;
+      const articles = response.articles;
       if (totalResults == 0) {
         // return no Item found view
+        const errorMessage = 'Data not found. Please try again'
+        const error = {
+          errorType:HTTP_ERROR_TYPE,
+          errorMessage:errorMessage
+        };
+        return <ErroView error={error} 
+         actionText='TRY AGAIN' action={this.onClickErrorViewAction}/>;
       }
       if (articles != null && articles != 'undefined') {
         // return articles
@@ -74,9 +89,7 @@ class NewsListScreen extends React.Component {
         onPress={() => this.onTapNewsArticle(article, index)}>
         <View style={styles.newsItemContainer}>
           <AsyncImage style={styles.image}
-            source={{
-              uri: article.urlToImage
-            }}
+            imageUrl={article.urlToImage}
             placeholderColor={Colors.background} />
           <View style={styles.bottomView}>
             <Text style={styles.source}>
@@ -91,6 +104,11 @@ class NewsListScreen extends React.Component {
         </View>
       </TouchableHighlight>
     );
+  }
+
+  onClickErrorViewAction = () =>{
+      // reload news list again
+      this.props.httpGet(newsListApi.getNewsList(INDIA_COUNTRY_CODE));
   }
 
   onTapNewsArticle = (article, index) => {
